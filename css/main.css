@@ -2,6 +2,8 @@ body { font-family: 'Raleway', sans-serif; }
 
 #photos, .photo, h2, h3 { text-align: center; }
 
+a, a:visited { color: #bfd7ff; }
+
 #photos .photo a img:hover {
   transform: scale(1.05,1.05);
   transition: all .5s;
@@ -18,7 +20,7 @@ body { font-family: 'Raleway', sans-serif; }
 }
 
 .lightbox .image {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   max-height: 85vh;
   border: 12px solid #ccc;
   border-radius: 5px;
@@ -40,8 +42,17 @@ body { font-family: 'Raleway', sans-serif; }
   color: #ccc;
 }
 
-.lightbox .image-wrap .prev { left: 2%; }
-.lightbox .image-wrap .next { right: 2%; }
+.lightbox .image-wrap .prev { left: -15%; }
+.lightbox .image-wrap .next { right: -15%; }
+
+.lightbox .image-wrap .close {
+  position: absolute;
+  right: 1%;
+  top: -2.5%;
+  color: #ccc;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
 
 .lightbox .image-wrap .arrow:hover {
   cursor: pointer;
@@ -50,9 +61,32 @@ body { font-family: 'Raleway', sans-serif; }
   transition: all .5s;
 }
 
+.lightbox .title { float: left; }
+.lightbox .flickr-link { float: right; }
+
 .hidden { display: none; }
 
 .noScroll { overflow-y: hidden; }
+
+@keyframes fadein {
+  0% { opacity:0; }
+  100% { opacity:1; }
+}
+
+@keyframes fadeout {
+  0% { opacity:1; }
+  100% { opacity:0; }
+}
+
+.fadein {
+  opacity: 1;
+  animation: fadein .5s linear;
+}
+
+.fadeout {
+  opacity: 0;
+  animation: fadeout .5s linear;
+}
 
 @media screen and (min-width: 768px) {
   .photo {
