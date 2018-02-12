@@ -19,8 +19,12 @@ function launchModal(event) {
   const imageList = buildImageList();
   let startIndex = event.target.parentNode.parentNode.attributes["data-index"].nodeValue;
   let imageBlock = `<figure>
-                      <img src="${imageList[startIndex].url}" alt="${imageList[startIndex].title}">
-                      <figcaption>${imageList[startIndex].title}
+                      <div class="imageWrap">
+                        <span class="arrow prev">&#8249;</span>
+                        <img src="${imageList[startIndex].url}" alt="${imageList[startIndex].title}">
+                        <span class="arrow next">&#8250;</span>
+                      </div>
+                      <figcaption>${imageList[startIndex].title}</figcaption>
                     </figure>`
 
   overlay.innerHTML = imageBlock;

@@ -11,20 +11,44 @@ body { font-family: 'Raleway', sans-serif; }
   background: rgba(0,0,0,0.7);
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   text-align: center;
 }
 
-#overlay figure img {
+figure img {
   margin-top: 0.5rem;
   max-height: 85vh;
   border: 12px solid #ccc;
   border-radius: 5px;
 }
 
-#overlay figure figcaption { color: #fff; }
+figure figcaption { color: #fff; }
+
+figure .imageWrap {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  position: relative;
+}
+
+figure .imageWrap .arrow {
+  position: absolute;
+  top: 38%;
+  font-size: 8.0rem;
+  color: #ccc;
+}
+
+figure .imageWrap .prev { left: 2%; }
+figure .imageWrap .next { right: 2%; }
+
+figure .imageWrap .arrow:hover {
+  cursor: pointer;
+  transform: scale(1.05,1.05);
+  color: #fff;
+  transition: all .5s;
+}
 
 .hidden { display: none; }
 
