@@ -13,6 +13,12 @@ function loadPics() {
 function launchModal(event) {
   event.preventDefault();
   document.getElementsByTagName("body")[0].classList.add("noScroll");
+  // document.getElementById("overlay").addEventListener("mousewheel", function(event) {
+  // window.addEventListener("scroll", function(event) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   return false;
+  // });
   let overlay = document.getElementById("overlay");
   const list = buildImageList();
   let index = parseInt(event.target.parentNode.parentNode.attributes["data-index"].nodeValue);
@@ -73,8 +79,8 @@ function closeLightboxListener() {
       overlay.classList.add("fadeout");
       setTimeout(() => {
         overlay.classList.add("hidden");
+        document.getElementsByTagName("body")[0].classList.remove("noScroll");
       }, 500);
-      document.getElementsByTagName("body")[0].classList.remove("noScroll");
       document.getElementsByClassName("image")[0].classList.add("fadeout");
     };
   });
