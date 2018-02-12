@@ -17,17 +17,18 @@ body { font-family: 'Raleway', sans-serif; }
   text-align: center;
 }
 
-#overlay img {
-  margin-top: 10%;
+#overlay figure img {
+  margin-top: 0.5rem;
+  max-height: 85vh;
+  border: 12px solid #ccc;
+  border-radius: 5px;
 }
 
-#overlay p {
-  color: white;
-}
+#overlay figure figcaption { color: #fff; }
 
-.hidden {
-  display: none;
-}
+.hidden { display: none; }
+
+.noScroll { overflow-y: hidden; }
 
 @media screen and (min-width: 768px) {
   .photo {
