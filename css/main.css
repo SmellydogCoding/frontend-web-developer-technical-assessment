@@ -2,7 +2,7 @@ body { font-family: 'Raleway', sans-serif; }
 
 #photos, .photo, h2, h3 { text-align: center; }
 
-.photo a img:hover {
+#photos .photo a img:hover {
   transform: scale(1.05,1.05);
   transition: all .5s;
 }
@@ -17,33 +17,33 @@ body { font-family: 'Raleway', sans-serif; }
   text-align: center;
 }
 
-figure img {
+.lightbox .image {
   margin-top: 0.5rem;
   max-height: 85vh;
   border: 12px solid #ccc;
   border-radius: 5px;
 }
 
-figure figcaption { color: #fff; }
+.lightbox .caption { color: #fff; }
 
-figure .imageWrap {
+.lightbox .image-wrap {
   margin: 0;
   padding: 0;
   display: inline-block;
   position: relative;
 }
 
-figure .imageWrap .arrow {
+.lightbox .image-wrap .arrow {
   position: absolute;
   top: 38%;
   font-size: 8.0rem;
   color: #ccc;
 }
 
-figure .imageWrap .prev { left: 2%; }
-figure .imageWrap .next { right: 2%; }
+.lightbox .image-wrap .prev { left: 2%; }
+.lightbox .image-wrap .next { right: 2%; }
 
-figure .imageWrap .arrow:hover {
+.lightbox .image-wrap .arrow:hover {
   cursor: pointer;
   transform: scale(1.05,1.05);
   color: #fff;
