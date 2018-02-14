@@ -13,34 +13,22 @@ function loadPics() {
 function launchModal(event) {
   event.preventDefault();
   document.getElementsByTagName("body")[0].classList.add("noScroll");
-  // document.getElementById("overlay").addEventListener("mousewheel", function(event) {
-  // window.addEventListener("scroll", function(event) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  //   return false;
-  // });
   let overlay = document.getElementById("overlay");
-  const list = buildImageList();
-  let index = parseInt(event.target.parentNode.parentNode.attributes["data-index"].nodeValue);
-  
-  overlay.classList.remove("fadeout");
   overlay.classList.remove("hidden");
-  overlay.classList.add("fadein");
-  loadPicture(index, list);
+  
+  let index = parseInt(event.target.parentNode.parentNode.attributes["data-index"].nodeValue);
+  const list = buildImageList();
+  
+  loadImage(index, list);
 
   document.getElementsByClassName("prev")[0].addEventListener("click", function() {
     index - 1 < 0 ? index = list.length - 1 : index --
-    document.getElementsByClassName("image")[0].classList.add("fadeout");
-    setTimeout(function() {
-      loadPicture(index, list);
-    }, 500); 
+    fadeout(index, list, loadImage);
   });
+  
   document.getElementsByClassName("next")[0].addEventListener("click", function() {
     index + 1 > list.length - 1 ? index = 0 : index ++
-    document.getElementsByClassName("image")[0].classList.add("fadeout");
-    setTimeout(function() {
-      loadPicture(index, list);
-    }, 500); 
+    fadeout(index, list, loadImage);
   });
 
   closeLightboxListener();
@@ -60,14 +48,59 @@ function buildImageList() {
   return imageList;
 }
 
-function loadPicture(index,imageList) {
-  document.getElementsByClassName("image")[0].src = imageList[index].url;
-  document.getElementsByClassName("image")[0].alt = imageList[index].title;
+function loadImage(index, imageList) {
+  let image = document.getElementsByClassName("image")[0];
+  image.src = imageList[index].url;
+  image.alt = imageList[index].title
   document.getElementsByClassName("title")[0].innerHTML = imageList[index].title;
   document.getElementsByClassName("flickr-link")[0].href = imageList[index].link;
-  document.getElementsByClassName("image")[0].classList.remove("fadeout");
-  document.getElementsByClassName("image")[0].classList.add("fadein");
+  image.onload = function() {
+    changeLightboxDimensions(index, imageList);
+  }
 }
+
+
+function fadeout(index, imageList, fadein){
+	let opacity = 1;
+	let timer = setInterval(function() {
+		if (opacity <= 0) {
+			clearInterval(timer);
+			document.getElementsByClassName("image")[0].src = "";
+			loadImage(index, imageList);
+		}
+		document.getElementsByClassName("image")[0].style.opacity = opacity;
+		opacity -=  0.1;
+	}, 30);
+}
+
+function changeLightboxDimensions(index, imageList) {
+  let imageWidth = document.getElementsByClassName("image")[0].width;
+  let imageHeight = document.getElementsByClassName("image")[0].height;
+  let lightbox = document.getElementsByClassName("image-wrap")[0];
+  let lightboxWidth = document.getElementsByClassName("image-wrap")[0].clientWidth;
+  let lightboxHeight = document.getElementsByClassName("image-wrap")[0].clientHeight;
+  
+  let lightboxAnimation = setInterval(function() {
+    if (imageWidth < lightboxWidth) { lightboxWidth -= 1; lightbox.style.width = lightboxWidth + "px"; }
+    else if (imageWidth > lightboxWidth) { lightboxWidth += 1; lightbox.style.width = lightboxWidth + "px"; }
+    if (imageHeight + 24 < lightboxHeight) { lightboxHeight -= 1; lightbox.style.height = lightboxHeight + "px"; }
+    else if (imageHeight + 24 > lightboxHeight) { lightboxHeight += 1; lightbox.style.height = lightboxHeight + "px"; }
+    if (imageWidth === lightboxWidth && imageHeight + 24 === lightboxHeight) { 
+      clearInterval(lightboxAnimation);
+      fadein(index, imageList);
+    }
+  }, 1);
+}
+
+function fadein(index, imageList) {
+  let opacity = 0;  // initial opacity
+  let timer = setInterval(function() {
+    if (opacity >= 1) { clearInterval(timer); }
+    document.getElementsByClassName("image")[0].style.opacity = opacity;
+    opacity += 0.1;
+  }, 30);
+}
+  
 
 function closeLightboxListener() {
   document.addEventListener("click", function(event) {
