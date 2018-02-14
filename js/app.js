@@ -31,14 +31,14 @@ function launchModal(event) {
   document.getElementsByClassName("prev")[0].addEventListener("click", function() {
     index - 1 < 0 ? index = list.length - 1 : index --
     document.getElementsByClassName("image")[0].classList.add("fadeout");
-    setTimeout(() => {
+    setTimeout(function() {
       loadPicture(index, list);
     }, 500); 
   });
   document.getElementsByClassName("next")[0].addEventListener("click", function() {
     index + 1 > list.length - 1 ? index = 0 : index ++
     document.getElementsByClassName("image")[0].classList.add("fadeout");
-    setTimeout(() => {
+    setTimeout(function() {
       loadPicture(index, list);
     }, 500); 
   });
@@ -53,7 +53,7 @@ function buildImageList() {
     let image = {
       "title": images[i].innerText,
       "url": images[i].firstElementChild.attributes.href.nodeValue,
-      "link": `https://www.flickr.com/photos/${images[i].attributes["data-owner"].nodeValue}/${images[i].attributes["data-id"].nodeValue}`
+      "link": "https://www.flickr.com/photos/" + images[i].attributes["data-owner"].nodeValue + "/" + images[i].attributes["data-id"].nodeValue
     }
     imageList.push(image);
   }
@@ -77,7 +77,7 @@ function closeLightboxListener() {
     let overlay = document.getElementById("overlay");
     if(event.target === lightbox || event.target === overlay || event.target === close) {
       overlay.classList.add("fadeout");
-      setTimeout(() => {
+      setTimeout(function() {
         overlay.classList.add("hidden");
         document.getElementsByTagName("body")[0].classList.remove("noScroll");
       }, 500);

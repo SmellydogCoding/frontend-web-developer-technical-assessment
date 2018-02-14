@@ -19,21 +19,32 @@ a, a:visited { color: #bfd7ff; }
   text-align: center;
 }
 
-.lightbox .image {
-  margin-top: 0.75rem;
-  max-height: 80vh;
-  max-width: 70vw;
-  border: 12px solid #ccc;
-  border-radius: 5px;
+.lightbox {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  justify-content: center;
 }
 
-.lightbox .caption { color: #fff; }
+/* .lightbox .caption { color: #fff; } */
 
 .lightbox .image-wrap {
   margin: 0;
   padding: 0;
   display: inline-block;
   position: relative;
+  align-self: center;
+  width: 60%;
+  height: 50%;
+  border: 12px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(120,120,120,0.7);
+}
+
+.lightbox .image-wrap .image {
+  /* margin-top: 0.75rem; */
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .lightbox .image-wrap .arrow {
@@ -62,7 +73,7 @@ a, a:visited { color: #bfd7ff; }
   transition: all .5s;
 }
 
-.lightbox .title { float: left; }
+.lightbox .title { float: left; color: #fff; }
 .lightbox .flickr-link { float: right; }
 
 .hidden { display: none; }
@@ -114,7 +125,7 @@ a, a:visited { color: #bfd7ff; }
     margin: 1.0rem 2.5%;
   }
 
-  .lightbox .image {
+  /* .lightbox .image {
     max-height: 85vh;
-  }
+  } */
 }
