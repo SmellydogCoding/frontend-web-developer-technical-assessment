@@ -49,13 +49,13 @@ a, a:visited { color: #bfd7ff; }
   color: #ccc;
 }
 
-.lightbox .image-wrap .prev { left: -15%; }
-.lightbox .image-wrap .next { right: -15%; }
+.lightbox .image-wrap .prev { left: -100px; }
+.lightbox .image-wrap .next { right: -123px; }
 
 .lightbox .image-wrap .close {
   position: absolute;
-  right: 1%;
-  top: -3.5%;
+  right: -3%;
+  top: -5%;
   color: #ccc;
   font-size: 1.3rem;
   cursor: pointer;
@@ -111,7 +111,7 @@ a, a:visited { color: #bfd7ff; }
 
 @media screen and (min-width: 1024px) {
   .lightbox .image-wrap .close {
-    top: -2.5%;
+    /*top: -2.5%;*/
   }
 }
 
