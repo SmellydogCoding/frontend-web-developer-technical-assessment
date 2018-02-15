@@ -55,37 +55,66 @@ function loadImage(index, imageList) {
   document.getElementsByClassName("title")[0].innerHTML = imageList[index].title;
   document.getElementsByClassName("flickr-link")[0].href = imageList[index].link;
   image.onload = function() {
-    changeLightboxDimensions(index, imageList);
+    formatImage(index, imageList);
   }
 }
 
 
 function fadeout(index, imageList, fadein){
 	let opacity = 1;
+	let image = document.getElementsByClassName("image")[0];
 	let timer = setInterval(function() {
 		if (opacity <= 0) {
 			clearInterval(timer);
-			document.getElementsByClassName("image")[0].src = "";
+      image.style.height = "";
+      image.style.width = "";
 			loadImage(index, imageList);
 		}
-		document.getElementsByClassName("image")[0].style.opacity = opacity;
+		image.style.opacity = opacity;
 		opacity -=  0.1;
 	}, 30);
 }
 
-function changeLightboxDimensions(index, imageList) {
-  let imageWidth = document.getElementsByClassName("image")[0].width;
-  let imageHeight = document.getElementsByClassName("image")[0].height;
+function formatImage(index, imageList) {
+  let image = document.getElementsByClassName("image")[0];
+  let imageWidth = image.width;
+  let imageHeight = image.height;
+  let ratio = imageWidth / imageHeight;
+  let maxHeight = Math.floor(window.innerHeight * .85);
+  if (imageHeight > maxHeight) {
+    image.style.height = maxHeight + "px";
+    image.style.width = Math.floor(maxHeight * ratio) + "px";
+    imageHeight = maxHeight;
+    imageWidth = Math.floor(maxHeight * ratio);
+  }
+  console.log(imageWidth,imageHeight)
+  formatLightbox(index,imageList,imageHeight,imageWidth);
+}
+
+function formatLightbox(index, imageList, imageHeight, imageWidth) {
   let lightbox = document.getElementsByClassName("image-wrap")[0];
-  let lightboxWidth = document.getElementsByClassName("image-wrap")[0].clientWidth;
-  let lightboxHeight = document.getElementsByClassName("image-wrap")[0].clientHeight;
+  let lightboxWidth = lightbox.clientWidth;
+  let lightboxHeight = lightbox.clientHeight;
   
   let lightboxAnimation = setInterval(function() {
-    if (imageWidth < lightboxWidth) { lightboxWidth -= 1; lightbox.style.width = lightboxWidth + "px"; }
-    else if (imageWidth > lightboxWidth) { lightboxWidth += 1; lightbox.style.width = lightboxWidth + "px"; }
-    if (imageHeight + 24 < lightboxHeight) { lightboxHeight -= 1; lightbox.style.height = lightboxHeight + "px"; }
-    else if (imageHeight + 24 > lightboxHeight) { lightboxHeight += 1; lightbox.style.height = lightboxHeight + "px"; }
-    if (imageWidth === lightboxWidth && imageHeight + 24 === lightboxHeight) { 
+    
+    if (imageWidth < lightboxWidth) {
+      lightboxWidth -= 1; 
+      lightbox.style.width = lightboxWidth + "px"; 
+    } else if (imageWidth > lightboxWidth) { 
+      lightboxWidth += 1; 
+      lightbox.style.width = lightboxWidth + "px"; 
+    }
+    
+    if (imageHeight < lightboxHeight) { 
+      lightboxHeight -= 1; 
+      lightbox.style.height = lightboxHeight + "px"; 
+    } else if (imageHeight  > lightboxHeight) { 
+      lightboxHeight += 1; 
+      lightbox.style.height = lightboxHeight + "px"; 
+    }
+    
+    if (imageWidth === lightboxWidth && imageHeight === lightboxHeight) { 
       clearInterval(lightboxAnimation);
       fadein(index, imageList);
     }
