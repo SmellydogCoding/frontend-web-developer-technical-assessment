@@ -80,6 +80,7 @@ function formatImage(index, imageList) {
   let imageWidth = image.width;
   let imageHeight = image.height;
   let ratio = imageWidth / imageHeight;
+  let maxWidth = Math.floor(window.innerWidth * .75);
   let maxHeight = Math.floor(window.innerHeight * .85);
   if (imageHeight > maxHeight) {
     image.style.height = maxHeight + "px";
@@ -87,7 +88,12 @@ function formatImage(index, imageList) {
     imageHeight = maxHeight;
     imageWidth = Math.floor(maxHeight * ratio);
   }
-  console.log(imageWidth,imageHeight)
+  if (imageWidth > maxWidth) {
+    image.style.width = maxWidth + "px";
+    imageWidth = maxWidth;
+    image.style.height = Math.floor(maxWidth / ratio) + "px";
+    imageHeight = Math.floor(maxWidth / ratio);
+  }
   formatLightbox(index,imageList,imageHeight,imageWidth);
 }
 
