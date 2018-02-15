@@ -40,6 +40,7 @@ a, a:visited { color: #bfd7ff; }
 
 .lightbox .image-wrap .image {
   opacity: 0;
+  max-height: 80vh;
 }
 
 .lightbox .image-wrap .arrow {

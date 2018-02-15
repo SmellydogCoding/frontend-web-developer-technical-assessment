@@ -23,12 +23,12 @@ function launchModal(event) {
 
   document.getElementsByClassName("prev")[0].addEventListener("click", function() {
     index - 1 < 0 ? index = list.length - 1 : index --
-    fadeout(index, list, loadImage);
+    fadeout(index, list);
   });
   
   document.getElementsByClassName("next")[0].addEventListener("click", function() {
     index + 1 > list.length - 1 ? index = 0 : index ++
-    fadeout(index, list, loadImage);
+    fadeout(index, list);
   });
 
   closeLightboxListener();
@@ -60,7 +60,7 @@ function loadImage(index, imageList) {
 }
 
 
-function fadeout(index, imageList, fadein){
+function fadeout(index, imageList){
 	let opacity = 1;
 	let image = document.getElementsByClassName("image")[0];
 	let timer = setInterval(function() {
