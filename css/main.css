@@ -34,12 +34,13 @@ a, a:visited { color: #bfd7ff; }
   display: inline-block;
   position: relative;
   align-self: center;
+  border: 12px solid #ccc;
+  border-radius: 5px;
 }
 
 .lightbox .image-wrap .image {
-  border: 12px solid #ccc;
-  border-radius: 5px;
   opacity: 0;
+  max-height: 80vh;
 }
 
 .lightbox .image-wrap .arrow {

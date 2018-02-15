@@ -23,12 +23,12 @@ function launchModal(event) {
 
   document.getElementsByClassName("prev")[0].addEventListener("click", function() {
     index - 1 < 0 ? index = list.length - 1 : index --
-    fadeout(index, list, loadImage);
+    fadeout(index, list);
   });
   
   document.getElementsByClassName("next")[0].addEventListener("click", function() {
     index + 1 > list.length - 1 ? index = 0 : index ++
-    fadeout(index, list, loadImage);
+    fadeout(index, list);
   });
 
   closeLightboxListener();
@@ -60,12 +60,11 @@ function loadImage(index, imageList) {
 }
 
 
-function fadeout(index, imageList, fadein){
+function fadeout(index, imageList){
 	let opacity = 1;
 	let timer = setInterval(function() {
 		if (opacity <= 0) {
 			clearInterval(timer);
-			document.getElementsByClassName("image")[0].src = "";
 			loadImage(index, imageList);
 		}
 		document.getElementsByClassName("image")[0].style.opacity = opacity;
@@ -74,18 +73,19 @@ function fadeout(index, imageList, fadein){
 }
 
 function changeLightboxDimensions(index, imageList) {
-  let imageWidth = document.getElementsByClassName("image")[0].width;
-  let imageHeight = document.getElementsByClassName("image")[0].height;
+  let image = document.getElementsByClassName("image")[0];
+  let imageWidth = image.width;
+  let imageHeight = image.height;
   let lightbox = document.getElementsByClassName("image-wrap")[0];
-  let lightboxWidth = document.getElementsByClassName("image-wrap")[0].clientWidth;
-  let lightboxHeight = document.getElementsByClassName("image-wrap")[0].clientHeight;
+  let lightboxWidth = lightbox.clientWidth;
+  let lightboxHeight = lightbox.clientHeight;
   
   let lightboxAnimation = setInterval(function() {
     if (imageWidth < lightboxWidth) { lightboxWidth -= 1; lightbox.style.width = lightboxWidth + "px"; }
     else if (imageWidth > lightboxWidth) { lightboxWidth += 1; lightbox.style.width = lightboxWidth + "px"; }
-    if (imageHeight + 24 < lightboxHeight) { lightboxHeight -= 1; lightbox.style.height = lightboxHeight + "px"; }
-    else if (imageHeight + 24 > lightboxHeight) { lightboxHeight += 1; lightbox.style.height = lightboxHeight + "px"; }
-    if (imageWidth === lightboxWidth && imageHeight + 24 === lightboxHeight) { 
+    if (imageHeight < lightboxHeight) { lightboxHeight -= 1; lightbox.style.height = lightboxHeight + "px"; }
+    else if (imageHeight > lightboxHeight) { lightboxHeight += 1; lightbox.style.height = lightboxHeight + "px"; }
+    if (imageWidth === lightboxWidth && imageHeight === lightboxHeight) { 
       clearInterval(lightboxAnimation);
       fadein(index, imageList);
     }
