@@ -23,7 +23,7 @@ app.get('/pics', (req,res) => {
       let gallery = '';
       let pics = JSON.parse(body);
       pics.photos.photo.forEach(function(photo,index) {
-        gallery += `<div class="photo" data-index=${index} data-owner="${photo.owner}" data-id="${photo.id}">
+        gallery += `<div id="photo${index}" class="photo" data-index=${index} data-owner="${photo.owner}" data-id="${photo.id}">
                       <a class="photo-link" href="https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg">
                         <img src="https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_m.jpg" alt="Flickr Photo - ${photo.title}"></a>
                       <p>${photo.title}</p>

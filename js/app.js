@@ -115,7 +115,7 @@ function formatLightbox(index, imageList, imageHeight, imageWidth) {
     if (imageHeight < lightboxHeight) { 
       lightboxHeight -= 1; 
       lightbox.style.height = lightboxHeight + "px"; 
-    } else if (imageHeight  > lightboxHeight) { 
+    } else if (imageHeight > lightboxHeight) { 
       lightboxHeight += 1; 
       lightbox.style.height = lightboxHeight + "px"; 
     }
