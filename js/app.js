@@ -139,6 +139,8 @@ function resizeLightboxHeight(imageWidth,imageHeight,index,imageList) {
       lightbox.style.height = lightboxHeight + "px"; 
     } 
     if (imageHeight === lightboxHeight) { 
+      document.getElementsByClassName("arrow")[0].style["line-height"] = lightboxHeight / 2 + "px";
+      document.getElementsByClassName("arrow")[1].style["line-height"] = lightboxHeight / 2 + "px";
       clearInterval(resizeLightboxAnimation);
       loadImageData(imageWidth,imageHeight,index,imageList);
     }
