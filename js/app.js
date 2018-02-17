@@ -3,7 +3,14 @@ function loadPics() {
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("photos").innerHTML = this.responseText;
+      if (this.responseText === 'error') { 
+        let body = document.getElementsByTagName("body")[0];
+        let error = document.createElement('p');
+        error.classList.add('error');
+        error.innerHTML = "It looks like something went wrong with Flickr.&nbsp;&nbsp;Please wait a few minutes and try again.&nbsp;&nbsp;Sorry about that!"
+        body.appendChild(error); 
+      }
+      else { document.getElementById("photos").innerHTML = this.responseText; }
     }
   };
   xhttp.open("GET", '/pics', true);

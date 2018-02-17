@@ -72,7 +72,6 @@ div[data-index="11"] { -ms-grid-row: 12; -ms-grid-column: 1; -ms-grid-column-ali
 
 .lightbox .image-wrap .image {
   opacity: 0;
-  /* max-height: 80vh; */
 }
 
 .lightbox .image-wrap .arrow {
@@ -198,6 +197,12 @@ div[data-index="11"] { -ms-grid-row: 12; -ms-grid-column: 1; -ms-grid-column-ali
   div[data-index="11"] { -ms-grid-row: 3; -ms-grid-column: 7; -ms-grid-column-align: center; }
 }
 
+/* reduce image jump on large screens that don't have a scroll bar ititally */
 @media screen and (min-width: 1100px) and (min-height: 865px) {
   .noScroll { margin-left: 12px; }
+}
+
+.error {
+  margin: 2.0rem;
+  text-align: center;
 }
