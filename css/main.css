@@ -1,4 +1,7 @@
-body { font-family: 'Raleway', sans-serif; }
+body { 
+  font-family: 'Raleway', sans-serif; 
+  width: 100%;
+}
 
 a, a:visited { color: #bfd7ff; }
 
@@ -59,7 +62,7 @@ div[data-index="11"] { -ms-grid-row: 12; -ms-grid-column: 1; -ms-grid-column-ali
 
 .lightbox .image-wrap .image {
   opacity: 0;
-  max-height: 80vh;
+  /* max-height: 80vh; */
 }
 
 .lightbox .image-wrap .arrow {
@@ -104,26 +107,17 @@ div[data-index="11"] { -ms-grid-row: 12; -ms-grid-column: 1; -ms-grid-column-ali
 }
 
 @keyframes fadein {
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeout {
-  to {
-    opacity: 0;
-  }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
-.fadein {
-  opacity: 0;
-  animation: fadein .5s linear ease-in 1 forwards;
-}
-
-.fadeout {
-  opacity: 1;
-  animation: fadeout .5s linear ease-in 1 forwards;
-}
+.fadein  { animation: fadein .5s linear; }
+.fadeout { animation: fadeout .5s linear; }
 
 @media screen and (min-width: 600px) {
   #photos {
