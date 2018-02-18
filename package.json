@@ -6,11 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "smellydogcoding",
+  "author": "Daniel McNeil",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmellydogCoding/frontend-web-developer-technical-assessment.git"
+  },
+  "homepage": "https://github.com/SmellydogCoding/frontend-web-developer-technical-assessment#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "morgan": "^1.9.0",
-    "node-fetch": "^2.0.0"
+    "morgan": "^1.9.0"
   }
 }

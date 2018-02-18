@@ -2,14 +2,14 @@
 function getPics() {
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-    //error handler
     if (this.readyState == 4 && this.status == 200) {
+      document.getElementsByClassName("loading")[0].classList.add("hidden");
+      //error handler
       if (this.responseText === 'error') { 
-        let body = document.getElementsByTagName("body")[0];
-        let error = document.createElement('p');
-        error.classList.add('error');
-        error.innerHTML = "It looks like something went wrong with Flickr.&nbsp;&nbsp;Please wait a few minutes and try again.&nbsp;&nbsp;Sorry about that!"
-        body.appendChild(error); 
+        let error = document.getElementsByClassName("error")[0];
+        let errorHTML = "<img src='img/fail.gif' alt='Flickr Error'><p>It looks like something went wrong with Flickr.&nbsp;&nbsp;Please wait a few minutes and try again.&nbsp;&nbsp;Sorry about that!</p>"
+        error.innerHTML = errorHTML;
+        error.classList.remove('hidden');
       }
       else { document.getElementById("photos").innerHTML = this.responseText; }
     }

@@ -202,7 +202,7 @@ div[data-index="11"] { -ms-grid-row: 12; -ms-grid-column: 1; -ms-grid-column-ali
   .noScroll { margin-left: 12px; }
 }
 
-.error {
+.loading, .error {
   margin: 2.0rem;
   text-align: center;
 }
