@@ -51,6 +51,7 @@ div[data-index="11"] { -ms-grid-row: 12; -ms-grid-column: 1; -ms-grid-column-ali
   top: 0;
   left: 0;
   text-align: center;
+  z-index: 1;
 }
 
 .lightbox {
