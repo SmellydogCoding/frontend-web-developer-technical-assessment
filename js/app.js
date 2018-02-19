@@ -38,7 +38,7 @@ function launchLightbox(event) {
   let image = document.getElementsByClassName("image")[0];
   image.src = list[index].url;
   image.onload = function() {
-    loadImage(index, list);
+    formatImage(index, list);
   }
   // click listener for the back button
   document.getElementsByClassName("prev")[0].addEventListener("click", function() {
