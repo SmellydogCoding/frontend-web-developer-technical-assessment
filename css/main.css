@@ -206,3 +206,23 @@ div[data-index="11"] { -ms-grid-row: 12; -ms-grid-column: 1; -ms-grid-column-ali
   margin: 2.0rem;
   text-align: center;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5rem 1.0rem;
+  background-color: #333;
+  color: #fff;
+  font-weight: 600;
+}
+
+.footer a {
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.footer span {
+  float: right;
+  margin-right: 2.5rem;
+}
