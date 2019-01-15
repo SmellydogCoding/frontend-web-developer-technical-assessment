@@ -223,7 +223,11 @@ div[data-index="11"] { -ms-grid-row: 12; -ms-grid-column: 1; -ms-grid-column-ali
   text-decoration: none;
 }
 
-.footer span {
+#currentYear {
+  margin-right: 0.5rem;
+}
+
+#githubLink {
   float: right;
   margin-right: 2.5rem;
 }
